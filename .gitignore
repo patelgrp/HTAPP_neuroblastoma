@@ -40,3 +40,7 @@ vignettes/*.pdf
 output/
 
 *.pdf
+
+data/adrenal_medulla_Seurat.RDS
+
+data/20220117 final HTAPP neuroblastoma LIGER.Rds
