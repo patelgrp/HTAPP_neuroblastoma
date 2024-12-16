@@ -6,6 +6,7 @@ library(numbat)
 library(dplyr)
 library(scCustomize)
 library(stringi)
+library(ggplot2)
 
 #the purpose of this code is to import datasets from HTAPP, exclude HTAPP-124-SMP-61 (which unfortunately)
 #mapped to adrenocortical adenoma instead of neuroblastoma when comparing
@@ -44,6 +45,9 @@ cluster.annos <-
   read.csv(file = "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/cluster_annotations.csv",
            header = TRUE,
            row.names = 1)
+confidence.annos <- read.csv(file = "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/confidence.csv",
+                             header = TRUE,
+                             row.names = 1)
 
 #this loop goes channel-by-channel, generates plots and incorporates annotations from the
 #cluster_annotations.csv file
@@ -72,7 +76,7 @@ for (i in 1:length(sample.names))
   
   #apply manual annotations based off singleR + numbat probability scores
   Idents(Seurat.obj[[i]]) <- "sample_cluster"
-  annos <- t(cluster.annos[i, ])
+  annos <- t(cluster.annos[i,])
   annos <- stri_remove_empty(annos)
   try(Seurat.obj[[i]] <-
         Rename_Clusters(Seurat.obj[[i]],
@@ -80,6 +84,7 @@ for (i in 1:length(sample.names))
                         meta_col_name = "annotated_coarse"))
   try(Seurat.obj[[i]]$annotated_coarse <-
         Seurat.obj[[i]]@active.ident)
+  Seurat.obj$malignant_calling <- confidence.annos[i]
   
   if (file.exists(paste0(sample.dirs, "/joint_post_2.tsv")))
   {
@@ -93,7 +98,7 @@ for (i in 1:length(sample.names))
         allele = numbat_output$clone_post$p_cnv_y
       )
     rownames(numbat.probs[[i]]) <- numbat.probs[[i]]$cell
-    numbat.probs[[i]] <- numbat.probs[[i]][Cells(Seurat.obj[[i]]),]
+    numbat.probs[[i]] <- numbat.probs[[i]][Cells(Seurat.obj[[i]]), ]
     Seurat.obj[[i]] <-
       AddMetaData(Seurat.obj[[i]], metadata = numbat.probs[[i]])
     
@@ -208,32 +213,66 @@ for (i in 1:length(sample.names))
 
 remove(Seurat.new)
 Seurat.merge <-
-  merge(Seurat.obj[[1]], Seurat.ob[2:length(sample.names)])
+  merge(Seurat.obj[[1]], Seurat.obj[2:length(sample.names)])
+integrated.Seurat <- Seurat.merge
 
 #####INTEGRATION OF ALL DATA WITH LIGER
-Seurat.new <- normalize(Seurat.new)
-Seurat.new <- selectGenes(Seurat.new)
-Seurat.new <- scaleNotCenter(Seurat.new)
-Seurat.new
+integrated.Seurat <- normalize(integrated.Seurat)
+integrated.Seurat <- selectGenes(integrated.Seurat)
+integrated.Seurat <- scaleNotCenter(integrated.Seurat)
+integrated.Seurat
 
-Seurat.new <- runINMF(Seurat.new, k = 20)
-Seurat.new <- quantileNorm(Seurat.new)
-Seurat.new
+integrated.Seurat <- runINMF(integrated.Seurat, k = 30)
+integrated.Seurat <- quantileNorm(integrated.Seurat)
+integrated.Seurat
 
-Seurat.new <-
-  RunUMAP(Seurat.new, reduction = "inmfNorm", dims = 1:20)
+integrated.Seurat <-
+  RunUMAP(integrated.Seurat, reduction = "inmfNorm", dims = 1:30)
 gg.byDataset <-
-  DimPlot(Seurat.new, group.by = "orig.ident", label = T) + NoLegend()
+  DimPlot(integrated.Seurat, group.by = "orig.ident", label = T) + NoLegend()
 gg.byCluster <-
-  DimPlot(Seurat.new, group.by = "inmfNorm.cluster", label = T) + NoLegend()
+  DimPlot(integrated.Seurat, group.by = "inmfNorm.cluster", label = T) + NoLegend()
 gg.bySingleR <-
-  DimPlot(Seurat.new, group.by = "SingleR.cluster.labels", label = T) + NoLegend()
+  DimPlot(integrated.Seurat, group.by = "SingleR.cluster.labels", label = T) + NoLegend()
+gg.byAnnot <-
+  DimPlot(integrated.Seurat, group.by = "annotated_coarse", label = T) + NoLegend()
 
-Seurat.new <-
-  FindNeighbors(Seurat.new, reduction = "inmfNorm", dims = 1:20)
-Seurat.new <- FindClusters(Seurat.new, resolution = 0.4)
+# Seurat.new <-
+#   FindNeighbors(Seurat.new, reduction = "inmfNorm", dims = 1:20)
+# Seurat.new <- FindClusters(Seurat.new, resolution = 0.4)
 
-saveRDS(Seurat.new, file = paste0(output.dir, "combined_dataset_k20.Rds"))
+saveRDS(integrated.Seurat,
+        file = paste0(output.dir, "combined_dataset_k30.Rds"))
 
+integrated.Seurat <-
+  readRDS(file = paste0(output.dir, "combined_dataset_k30.Rds"))
 
+Idents(integrated.Seurat) <- "Channel"
+pdf(file = paste0(output.dir, "integrated data split by Seurat_analysis.pdf"), width = 20, height = 10)
+print(DimPlot(
+  integrated.Seurat,
+  group.by = c("inmfNorm.cluster", "annotated_coarse"),
+  label = T
+) + ggtitle("All samples plot"))
+
+for (i in 1:length(sample.names))
+{
+  print(
+    DimPlot(
+      integrated.Seurat,
+      group.by = c("inmfNorm.cluster", "annotated_coarse"),
+      label = T,
+      cells = WhichCells(integrated.Seurat, idents = sample.names[i])
+    ) + ggtitle(paste0(sample.names[i], " plot"))
+  )
+  print(
+    DimPlot(
+      integrated.Seurat,
+      group.by = c("seurat_clusters", "annotated_coarse"),
+      label = T,
+      cells = WhichCells(integrated.Seurat, idents = sample.names[i])
+    ) + ggtitle(paste0(sample.names[i], " plot"))
+  )
+}
+dev.off()
 #####INTEGRATION OF EACH SUBSET WITH LIGER
