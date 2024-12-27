@@ -1,0 +1,55 @@
+﻿Sample.id,Age,Gender,Treatment.Center,Primary.Site,Ethnicity,INSS.Stage,INRGSS.Stage,COG.Risk,Histologic.Diagnosis,MYCN,ALK,ATRX,1p,11q,17q,Sample.type,Follow.up,Sample,Treatment Status,anti-GD2,Methylation.Group,sc.or.snRNA-seq,WES,RNA-seq,Methyl,multiplex_IF,MIBI,CODEX,Slide-seq
+HTAPP-100-SMP-1,3,F,SJCRH,Adrenal,White,4,M,High,GNB,non-amplified,wild type,wild type,normal,normal,normal,resection,active,primary,treated,Yes,1,nucleus,yes,yes,yes,yes,,,
+HTAPP-102-SMP-11,0.833333333,M,SJCRH,Adrenal,White,3,L2,Intermediate,NB,non-amplified,wild type,wild type,normal,normal,gain,resection,NED,primary,untreated,NA,2,nucleus,yes,yes,yes,yes,yes,yes,yes
+HTAPP-114-SMP-21,1.416666667,M,SJCRH,Adrenal,White,1,L1,Low,NB,non-amplified,wild type,wild type,normal,loss,gain,resection,NED,primary,untreated,NA,2,nucleus,yes,yes,yes,yes,,,
+HTAPP-116-SMP-31,1.25,F,SJCRH,Adrenal,White,4,M,High,NB,non-amplified,mutant,wild type,loss,normal,normal,resection,NED,primary,untreated,NA,2,nucleus,yes,yes,yes,yes,yes,yes,yes
+HTAPP-120-SMP-41,0.916666667,M,SJCRH,Paraspinal Mass,White,1,L1,Low,NB,non-amplified,mutant,wild type,gain,normal,gain,resection,NED,primary,untreated,NA,2,nucleus,yes,yes,yes,yes,yes,yes,yes
+HTAPP-123-SMP-51,1.083333333,M,SJCRH,Adrenal,White,1,L1,Low,NB,non-amplified,wild type,wild type,gain,gain,gain,resection,NED,primary,untreated,NA,2,nucleus,yes,yes,yes,yes,,,
+HTAPP-125-SMP-71,3,F,SJCRH,Paraspinal Mass,Black,3,L2,Intermediate,GNB,non-amplified,wild type,wild type,gain,normal,gain,resection,NED,primary,untreated,NA,2,nucleus,yes,yes,yes,yes,yes,yes,yes
+HTAPP-126-SMP-81,0.166666667,F,SJCRH,Adrenal,Black,1,L1,Low,NB,non-amplified,wild type,wild type,gain,normal,gain,resection,NED,primary,untreated,NA,3,nucleus,yes,yes,yes,yes,,,
+HTAPP-130-SMP-91,2,M,SJCRH,Adrenal,White,4,M,High,NB,amplified,mutant,wild type,loss,normal,gain,resection,NED,primary,untreated,NA,4,nucleus,yes,yes,yes,,yes,yes,yes
+HTAPP-136-SMP-102,2,F,SJCRH,Adrenal,White,2B,L1,Low,NB,non-amplified,wild type,wild type,normal,normal,gain,resection,DNOD,primary,untreated,NA,2,nucleus,yes,yes,yes,yes,yes,yes,yes
+HTAPP-141-SMP-111,3,F,SJCRH,Mediastinal Mass,Black,4,M,High,NB,non-amplified,wild type,wild type,normal,loss,gain,resection,NED,primary,untreated,NA,2,nucleus,yes,yes,yes,yes,yes,yes,yes
+HTAPP-145-SMP-121,19,M,SJCRH,Adrenal,White,1,L1,Low,GNB,non-amplified,wild type,wild type,normal,normal,normal,resection,NED,primary,untreated,NA,1,nucleus,yes,yes,yes,yes,,,
+HTAPP-146-SMP-131,2,M,SJCRH,Paraspinal Mass,Black,2A,L1,Low,NB,non-amplified,wild type,wild type,normal,loss,gain,resection,NED,primary,untreated,NA,1,nucleus,yes,yes,yes,yes,,,
+HTAPP-148-SMP-141,4,F,SJCRH,Paraspinal Mass,Black,2A,L1,Low,GNB,non-amplified,mutant,wild type,normal,normal,normal,resection,NED,primary,untreated,NA,unknown,nucleus,yes,yes,,,yes,yes,yes
+HTAPP-155-SMP-151,1.583333333,F,SJCRH,Paraspinal Mass,White,1,L1,Low,NB,non-amplified,wild type,wild type,normal,normal,normal,resection,NED,primary,untreated,NA,2,nucleus,yes,yes,yes,,,,
+HTAPP-159-SMP-171,1.25,F,SJCRH,Adrenal,White,4,M,High,NB,amplified,mutant,wild type,loss,normal,gain,resection,unknown,primary,treated,No,4,cell,yes,yes,yes,yes,,,
+HTAPP-163-SMP-181,1.833333333,F,SJCRH,Adrenal,White,4,M,High,NB,non-amplified,wild type,wild type,normal,normal,gain,resection,unknown,primary,treated,No,2,cell,yes,yes,yes,,,,
+HTAPP-164-SMP-191,0.583333333,F,SJCRH,Adrenal,White,4S,Ms,High,NB,amplified,wild type,wild type,normal,normal,gain,resection,active,primary,untreated,NA,2,cell,yes,yes,yes,yes,,,
+HTAPP-166-SMP-201,5,F,SJCRH,Adrenal,White,Recurrent,Recurrent,Recurrent,GNB,non-amplified,wild type,wild type,normal,normal,normal,resection,unknown,primary,untreated,NA,1,cell,yes,yes,yes,yes,,,
+HTAPP-167-SMP-211,0.25,M,SJCRH,Adrenal,White,4,M,High,NB,non-amplified,wild type,wild type,normal,normal,gain,resection,NED,primary,treated,Yes,1,cell,yes,yes,yes,yes,,,
+HTAPP-168-SMP-221,5,F,SJCRH,Adrenal,White,4,M,High,NB,non-amplified,wild type,wild type,normal,normal,normal,resection,active,primary,treated,Yes,2,cell,yes,yes,yes,yes,,,
+HTAPP-171-SMP-231,0.833333333,M,SJCRH,Adrenal,White,4,M,High,NB,amplified,wild type,wild type,unknown,unknown,unknown,resection,NED,primary,treated,No,4,nucleus,yes,yes,yes,yes,,,
+HTAPP-184-SMP-241,3,M,SJCRH,Adrenal,White,4,M,High,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,resection,NED,primary,treated,No,1,nucleus,,,yes,,,,
+HTAPP-194-SMP-251,0.666666667,F,SJCRH,Adrenal,Black,4,M,High,NB,amplified,wild type,wild type,normal,normal,normal,resection,DOD,primary,treated,No,2,nucleus,yes,yes,yes,yes,,,
+HTAPP-195-SMP-261,2,F,SJCRH,Adrenal,White,2B,L2,High,NB,amplified,wild type,wild type,gain,gain,gain,resection,NED,primary,untreated,NA,4,nucleus,yes,yes,yes,yes,,,
+HTAPP-196-SMP-271,2,F,SJCRH,Adrenal,Black,4,M,High,NB,non-amplified,wild type,wild type,normal,loss,gain,resection,NED,primary,treated,Yes,1,nucleus,yes,yes,yes,yes,,,
+HTAPP-198-SMP-281,2,F,SJCRH,Paraspinal Mass,White,4,M,High,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,resection,NED,primary,treated,No,2,nucleus,,yes,yes,yes,,,
+HTAPP-204-SMP-6601,0.416666667,M,SJCRH,Mediastinal Mass,White,2A,L1,Low,NB,non-amplified,wild type,wild type,gain,normal,gain,resection,NED,primary,untreated,unknown,2,nucleus,yes,yes,yes,yes,yes,yes,yes
+HTAPP-233-SMP-361,1.5,F,DFCI,Adrenal ,unknown,3,unknown,High,NB,amplified,unknown,unknown,unknown,unknown,unknown,resection,NED,primary,treated,No,unknown,nucleus,,yes,,,,,
+HTAPP-244-SMP-451,0.166666667,M,DFCI,Adrenal,White/Non-Hispanic,1,unknown,Low,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,resection,unknown,primary,unknown,unknown,unknown,nucleus,yes,yes,,,,,
+HTAPP-312-SMP-901,0.5,M,DFCI,Paraspinal Mass,White/Non-Hispanic,2A,L2,Intermediate,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,biopsy,NED,primary,untreated,NA,unknown,cell,yes,yes,,,,,
+HTAPP-312-SMP-902,0.5,M,DFCI,Paraspinal Mass,White/Non-Hispanic,2A,L2,Intermediate,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,resection,NED,primary,treated,No,unknown,cell,yes,yes,,,,,
+HTAPP-352-SMP-1231,8,M,DFCI,Adrenal,White/Non-Hispanic,3,unknown,High,NB,amplified,wild type,wild type,unknown,unknown,unknown,resection,DNOD,primary,treated,No,unknown,nucleus,yes,,,,,,
+HTAPP-376-SMP-1381,3,M,DFCI,Adrenal,African American/Non-Hispanic,4,unknown,High,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,resection,NED,primary,treated,No,unknown,nucleus,,yes,,,,,
+HTAPP-396-SMP-1621,0.083333333,M,DFCI,Retroperitoneal mass,unknown,4,unknown,Intermediate,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,resection,active,metastasis,treated,No,unknown,nucleus,yes,,,,,,
+HTAPP-437-SMP-1861,0.166666667,M,DFCI,Retroperitoneal mass,White/Non-Hispanic,unknown,unknown,Low,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,unknown,NED,primary,unknown,unknown,unknown,nucleus,,yes,,,,,
+HTAPP-527-SMP-6767,2,M,DFCI,Mediastinal Mass,Non-Hispanic,unknown,L2,Intermediate,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,unknown,NED,primary,treated,No,unknown,nucleus,yes,,,,,,
+HTAPP-621-SMP-3181,1.25,M,DFCI,Adrenal,White/Non-Hispanic,unknown,L1,Low,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,unknown,active,primary,unknown,unknown,unknown,nucleus,,,,,,,
+HTAPP-656-SMP-3481,0.833333333,F,DFCI,Adrenal,White/Non-Hispanic,4,unknown,Intermediate,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,resection,NED,primary,treated,No,unknown,both,yes,,,,yes,,
+HTAPP-672-SMP-8509,2,M,DFCI,Mediastinal mass,White (ethnicity unknown),3,L2,High,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,resection,active,primary,treated,No,unknown,cell,,yes,,,yes,yes,yes
+HTAPP-683-SMP-6769,0.583333333,M,DFCI,Adrenal,Non-Hispanic,4S,unknown,Intermediate,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,resection,NED,primary,treated,No,unknown,nucleus,yes,yes,,,,,
+HTAPP-756-SMP-6779,3,F,DFCI,Abdomen,unknown,3,unknown,High,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,resection,NED,primary,treated,No,unknown,nucleus,yes,,,,,,
+HTAPP-766-SMP-6780,2,M,DFCI,Adrenal,Non-Hispanic,4,M,High,NB,amplified,unknown,unknown,unknown,unknown,unknown,resection,NED,primary,treated,No,unknown,nucleus,,yes,,,,,
+HTAPP-768-SMP-6781,2,F,DFCI,Retroperitoneal mass,unknown,3,unknown,Intermediate,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,resection,NED,primary,treated,No,unknown,nucleus,yes,yes,,,,,
+HTAPP-797-SMP-4232,5,M,DFCI,Mediastinal Mass,Asian/Non-Hispanic,unknown,unknown,Low,GNB,non-amplified,wild type,wild type,unknown,unknown,unknown,resection,NED,primary,unknown,unknown,unknown,cell,yes,yes,,,,,
+HTAPP-800-SMP-6783,0.666666667,F,DFCI,Paraspinal Mass,unknown,2B,unknown,Low,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,resection,unknown,primary,unknown,unknown,unknown,nucleus,,yes,,,,,
+HTAPP-800-SMP-6784,0.666666667,F,DFCI,Adrenal,unknown,2B,unknown,Low,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,resection,unknown,primary,unknown,unknown,unknown,nucleus,yes,yes,,,,,
+HTAPP-803-SMP-6786,1.666666667,F,SJCRH,Adrenal,White,4,M,High,NB,non-amplified,mutant,wild type,normal,normal,normal,resection,DOD,primary,treated,Yes,2,nucleus,yes,yes,yes,yes,,,
+HTAPP-811-SMP-6832,3,M,SJCRH,Adrenal,Black,4,M,High,NB,amplified,mutant,wild type,normal,normal,normal,resection,DOD,primary,treated,Yes,2,nucleus,yes,yes,yes,,,,
+HTAPP-811-SMP-6833,3,M,SJCRH,Adrenal,Black,4,M,High,NB,amplified,mutant,wild type,normal,normal,normal,resection,DOD,primary,treated,Yes,2,nucleus,,,yes,yes,,,
+HTAPP-811-SMP-6834,3,M,SJCRH,Adrenal,Black,4,M,High,NB,amplified,mutant,wild type,normal,normal,normal,resection,DOD,primary,treated,Yes,2,nucleus,,,yes,,,,
+HTAPP-813-SMP-6848,0,M,DFCI,Adrenal,unknown,4S,Ms,Low,NB,non-amplified,wild type,wild type,unknown,unknown,unknown,biopsy,active,metastasis,untreated,NA,unknown,cell,yes,,,,,,
+HTAPP-829-SMP-6975,11,M,SJCRH,Adrenal,White,4,M,High,NB,non-amplified,wild type,wild type,unknown,unknown,gain,resection,DOD,primary,treated,Yes,2,nucleus,yes,yes,yes,yes,,,
+HTAPP-931-SMP-7448,0,M,SJCRH,Adrenal,White,4S,Ms,Low,NB,non-amplified,unknown,unknown,unknown,unknown,unknown,resection,active,primary,untreated,NA,3,cell,,,yes,yes,,,
