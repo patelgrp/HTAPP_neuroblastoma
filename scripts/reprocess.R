@@ -8,9 +8,9 @@ library(scCustomize)
 library(stringi)
 library(ggplot2)
 
-#the purpose of this code is to import datasets from HTAPP, exclude HTAPP-124-SMP-61 (which unfortunately)
-#mapped to adrenocortical adenoma instead of neuroblastoma when comparing
-#pseudobulked data to reference bulk sequencing data
+#the purpose of this code is to import datasets from HTAPP, exclude HTAPP-124-SMP-61 (which unfortunately
+#was a sample contaminated with a portion of adrenocortical adenoma. This has been validated by comparing
+#pseudobulked data to reference bulk sequencing data.
 source.dir <-
   "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/data/"
 output.dir <-
@@ -34,7 +34,7 @@ sample.names <- unique(Seurat.new$Channel)
 
 #import numbat data so that we can annotate SNV and CNV probability scores for each sample
 numbat.dir <-
-  "/mnt/storage1/Anand_temp/HTAPP/numbat/processed2/"
+  "/media/ResearchHome/dyergrp/projects/ALSF_Pediatric_Atlas/common/REFERENCE_PUBLISHED/HTAPP/numbat/processed2/"
 
 #create empty lists to dump data into
 #numbat_probs <- list()
@@ -42,11 +42,11 @@ Seurat.obj <- list()
 numbat.probs <- list()
 
 cluster.annos <-
-  read.csv(file = "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/cluster_annotations.csv",
+  read.csv(file = "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/scripts/cluster_annotations.csv",
            header = TRUE,
            row.names = 1)
 confidence.annos <-
-  read.csv(file = "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/confidence.csv",
+  read.csv(file = "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/scripts/confidence.csv",
            header = TRUE,
            row.names = 1)
 
@@ -80,9 +80,9 @@ for (i in 1:length(sample.names))
   annos <- t(cluster.annos[i, ])
   annos <- stri_remove_empty(annos)
   try(Seurat.obj[[i]] <-
-        Rename_Clusters(Seurat.obj[[i]],
+        Rename_Clusters(Seurat.obj[[i]], 
                         new_idents = annos,
-                        meta_col_name = "annotated_coarse"))
+                        new_ident_name = "annotated_coarse", overwrite = TRUE))
   try(Seurat.obj[[i]]$annotated_coarse <-
         Seurat.obj[[i]]@active.ident)
   Seurat.obj[[i]]$malignant_calling <-
@@ -224,12 +224,12 @@ integrated.Seurat <- selectGenes(integrated.Seurat)
 integrated.Seurat <- scaleNotCenter(integrated.Seurat)
 integrated.Seurat
 
-integrated.Seurat <- runINMF(integrated.Seurat, k = 30)
+integrated.Seurat <- runINMF(integrated.Seurat, k = 20)
 integrated.Seurat <- quantileNorm(integrated.Seurat)
 integrated.Seurat
 
 integrated.Seurat <-
-  RunUMAP(integrated.Seurat, reduction = "inmfNorm", dims = 1:30)
+  RunUMAP(integrated.Seurat, reduction = "inmfNorm", dims = 1:20)
 gg.byDataset <-
   DimPlot(integrated.Seurat, group.by = "orig.ident", label = T) + NoLegend()
 gg.byCluster <-
@@ -244,7 +244,7 @@ gg.byAnnot <-
 # Seurat.new <- FindClusters(Seurat.new, resolution = 0.4)
 
 saveRDS(integrated.Seurat,
-        file = paste0(output.dir, "combined_dataset_k30.Rds"))
+        file = paste0(output.dir, "combined_dataset_k20.Rds"))
 
 # integrated.Seurat <-
 #   readRDS(file = paste0(output.dir, "combined_dataset_k30.Rds"))
