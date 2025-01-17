@@ -37,10 +37,10 @@ vignettes/*.pdf
 
 .~lock.cluster_annotations.csv#
 
-output/
-
 *.pdf
 
 data/adrenal_medulla_Seurat.RDS
 
 data/20220117 final HTAPP neuroblastoma LIGER.Rds
+
+*.Rds

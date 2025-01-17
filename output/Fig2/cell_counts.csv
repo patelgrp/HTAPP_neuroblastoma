@@ -1,0 +1,48 @@
+,endothelium,immune,malignant,stroma,orig.ident,condition,MYCN,ALK,INSS_Stage,INRGSS_Stage,Sample,Treatment_Status,anti_GD2,Methylation_Group,COG_Risk
+HTAPP-100-SMP-1,850,2743,1666,959,HTAPP-100-SMP-1,nucleus,non-amplified,wild type,4,M,primary,treated_chemo-immunotherapy,Yes,1,High
+HTAPP-102-SMP-11,328,616,6930,287,HTAPP-102-SMP-11,nucleus,non-amplified,wild type,3,L2,primary,untreated,NA,2,Intermediate
+HTAPP-114-SMP-21,655,2159,3918,818,HTAPP-114-SMP-21,nucleus,non-amplified,wild type,1,L1,primary,untreated,NA,2,Low
+HTAPP-116-SMP-31,320,683,7578,198,HTAPP-116-SMP-31,nucleus,non-amplified,mutant,4,M,primary,untreated,NA,2,High
+HTAPP-120-SMP-41,1858,852,2706,2788,HTAPP-120-SMP-41,nucleus,non-amplified,mutant,1,L1,primary,untreated,NA,2,Low
+HTAPP-123-SMP-51,112,343,6414,233,HTAPP-123-SMP-51,nucleus,non-amplified,wild type,1,L1,primary,untreated,NA,2,Low
+HTAPP-125-SMP-71,5992,655,1138,8901,HTAPP-125-SMP-71,nucleus,non-amplified,wild type,3,L2,primary,untreated,NA,2,Intermediate
+HTAPP-126-SMP-81,167,1698,5172,212,HTAPP-126-SMP-81,nucleus,non-amplified,wild type,1,L1,primary,untreated,NA,3,Low
+HTAPP-130-SMP-91,0,88,7339,18,HTAPP-130-SMP-91,nucleus,amplified,mutant,4,M,primary,untreated,NA,4,High
+HTAPP-136-SMP-102,1038,4011,6991,1921,HTAPP-136-SMP-102,nucleus,non-amplified,wild type,2B,L1,primary,untreated,NA,2,Low
+HTAPP-141-SMP-111,338,168,7320,582,HTAPP-141-SMP-111,nucleus,non-amplified,wild type,4,M,primary,untreated,NA,2,High
+HTAPP-141-SMP-119,0,90,6008,183,HTAPP-141-SMP-119,nucleus,non-amplified,wild type,4,M,primary,untreated,NA,2,High
+HTAPP-146-SMP-131,428,1542,9358,1123,HTAPP-146-SMP-131,nucleus,non-amplified,wild type,2A,L1,primary,untreated,NA,1,Low
+HTAPP-148-SMP-141,1345,1170,2949,4860,HTAPP-148-SMP-141,nucleus,non-amplified,mutant,2A,L1,primary,untreated,NA,unknown,Low
+HTAPP-155-SMP-151,262,637,6950,117,HTAPP-155-SMP-151,nucleus,non-amplified,wild type,1,L1,primary,untreated,NA,2,Low
+HTAPP-159-SMP-171,480,0,6516,0,HTAPP-159-SMP-171,cell,amplified,mutant,4,M,primary,treated_chemotherapy,No,4,High
+HTAPP-163-SMP-181,1671,1190,281,567,HTAPP-163-SMP-181,cell,non-amplified,wild type,4,M,primary,treated_chemotherapy,No,2,High
+HTAPP-164-SMP-191,75,197,2508,0,HTAPP-164-SMP-191,cell,amplified,wild type,4S,Ms,primary,untreated,NA,2,High
+HTAPP-168-SMP-221,673,8651,13434,417,HTAPP-168-SMP-221,cell,non-amplified,wild type,4,M,primary,treated_chemo-immunotherapy,Yes,2,High
+HTAPP-171-SMP-231,525,617,7531,293,HTAPP-171-SMP-231,nucleus,amplified,wild type,4,M,primary,treated_chemotherapy,No,4,High
+HTAPP-184-SMP-241,325,210,6804,1054,HTAPP-184-SMP-241,nucleus,non-amplified,unknown,4,M,primary,treated_chemotherapy,No,1,High
+HTAPP-194-SMP-251,117,524,4904,122,HTAPP-194-SMP-251,nucleus,amplified,wild type,4,M,primary,treated_chemotherapy,No,2,High
+HTAPP-195-SMP-261,0,0,5595,114,HTAPP-195-SMP-261,nucleus,amplified,wild type,2B,L2,primary,untreated,NA,4,High
+HTAPP-196-SMP-271,316,1369,5340,287,HTAPP-196-SMP-271,nucleus,non-amplified,wild type,4,M,primary,treated_chemo-immunotherapy,Yes,1,High
+HTAPP-198-SMP-281,270,1502,4886,324,HTAPP-198-SMP-281,nucleus,non-amplified,unknown,4,M,primary,treated_chemotherapy,No,2,High
+HTAPP-204-SMP-6601,150,766,11224,518,HTAPP-204-SMP-6601,nucleus,non-amplified,wild type,2A,L1,primary,untreated,Unknown,2,Low
+HTAPP-233-SMP-361,597,635,3098,675,HTAPP-233-SMP-361,nucleus,amplified,unknown,3,unknown,primary,treated_chemotherapy,No,unknown,High
+HTAPP-244-SMP-451,244,1116,25555,662,HTAPP-244-SMP-451,nucleus,non-amplified,wild type,1,unknown,primary,unknown,unknown,unknown,Low
+HTAPP-312-SMP-901,0,78,4995,0,HTAPP-312-SMP-901,cell,non-amplified,wild type,2A,L2,primary,untreated,NA,unknown,Intermediate
+HTAPP-312-SMP-902,203,817,1999,533,HTAPP-312-SMP-902,cell,non-amplified,wild type,2A,L2,primary,treated_chemotherapy,No,unknown,Intermediate
+HTAPP-437-SMP-1861,1018,376,3447,4855,HTAPP-437-SMP-1861,nucleus,non-amplified,unknown,unknown,unknown,primary,unknown,unknown,unknown,Low
+HTAPP-527-SMP-6767,1931,3159,5697,6455,HTAPP-527-SMP-6767,nucleus,non-amplified,wild type,unknown,L2,primary,treated_chemotherapy,No,unknown,Intermediate
+HTAPP-621-SMP-3181,0,895,10916,2714,HTAPP-621-SMP-3181,nucleus,non-amplified,unknown,unknown,L1,primary,unknown,unknown,unknown,Low
+HTAPP-656-SMP-3481_TST,2243,227,942,3448,HTAPP-656-SMP-3481_TST,nucleus,non-amplified,wild type,4,unknown,primary,treated_chemotherapy,No,unknown,Intermediate
+HTAPP-672-SMP-8509,106,1253,4318,314,HTAPP-672-SMP-8509,cell,non-amplified,unknown,3,L2,primary,treated_chemotherapy,No,unknown,High
+HTAPP-683-SMP-6769,649,2467,13570,534,HTAPP-683-SMP-6769,nucleus,non-amplified,wild type,4S,unknown,primary,treated_chemotherapy,No,unknown,Intermediate
+HTAPP-756-SMP-6779,303,878,25173,133,HTAPP-756-SMP-6779,nucleus,non-amplified,unknown,3,unknown,primary,treated_chemotherapy,No,unknown,High
+HTAPP-768-SMP-6781,2584,2296,4924,8065,HTAPP-768-SMP-6781,nucleus,non-amplified,wild type,3,unknown,primary,treated_chemotherapy,No,unknown,Intermediate
+HTAPP-800-SMP-6783,259,2844,11169,720,HTAPP-800-SMP-6783,nucleus,non-amplified,unknown,2B,unknown,primary,unknown,unknown,unknown,Low
+HTAPP-800-SMP-6784,0,546,8372,59,HTAPP-800-SMP-6784,nucleus,non-amplified,unknown,2B,unknown,primary,unknown,unknown,unknown,Low
+HTAPP-803-SMP-6786,176,318,2545,517,HTAPP-803-SMP-6786,nucleus,non-amplified,mutant,4,M,primary,treated_chemo-immunotherapy,Yes,2,High
+HTAPP-811-SMP-6832,0,472,1880,127,HTAPP-811-SMP-6832,nucleus,amplified,mutant,4,M,primary,treated_chemo-immunotherapy,Yes,2,High
+HTAPP-811-SMP-6833,260,191,6214,233,HTAPP-811-SMP-6833,nucleus,amplified,mutant,4,M,primary,treated_chemo-immunotherapy,Yes,2,High
+HTAPP-811-SMP-6834,480,329,2517,526,HTAPP-811-SMP-6834,nucleus,amplified,mutant,4,M,primary,treated_chemo-immunotherapy,Yes,2,High
+HTAPP-813-SMP-6848,0,110,6565,0,HTAPP-813-SMP-6848,cell,non-amplified,wild type,4S,Ms,metastasis,untreated,NA,unknown,Low
+HTAPP-829-SMP-6975,736,600,3390,1615,HTAPP-829-SMP-6975,nucleus,non-amplified,wild type,4,M,primary,treated_chemo-immunotherapy,Yes,2,High
+HTAPP-931-SMP-7448,0,118,2944,103,HTAPP-931-SMP-7448,cell,non-amplified,unknown,4S,Ms,primary,untreated,NA,3,Low
