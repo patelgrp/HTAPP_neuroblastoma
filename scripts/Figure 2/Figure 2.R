@@ -157,6 +157,6 @@ dev.off()
 
 #write table for scCODA analyses
 write.csv(
-  table(gcdata.subset$annotated_coarse, gcdata.subset$orig.ident),
+  table(gcdata.subset$orig.ident, gcdata.subset$annotated_coarse),
   file = paste0(output.dir, "/cell counts.csv")
 )
