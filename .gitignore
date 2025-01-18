@@ -35,9 +35,8 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
-.~lock.cluster_annotations.csv#
-
 *.pdf
+.~lock.cluster_annotations.csv#
 
 data/adrenal_medulla_Seurat.RDS
 
