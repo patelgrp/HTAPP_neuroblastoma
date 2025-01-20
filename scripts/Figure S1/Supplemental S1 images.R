@@ -50,7 +50,6 @@ print(
 dev.off()
 
 ################### PANEL C ########################
-#note: this code will not run in Seurat v5!
 sample.ids <- sort(unique(gcdata$orig.ident))
 Idents(gcdata) <- "orig.ident"
 
