@@ -6,6 +6,8 @@ library(RColorBrewer)
 library(rliger)
 library(SCpubr)
 library(UCell)
+library(scCustomize)
+library(MetBrewer)
 
 #Data for this figure were generated using the Broad Terra pipeline
 #This pipeline takes Cell Ranger aligned data, and uses Cellbender to remove
@@ -41,6 +43,7 @@ gcdata <-
 saveRDS(gcdata,
         file = paste0(output.dir, "malignant_combined_dataset_k12_reprocess.Rds"))
 
+gcdata <- readRDS(paste0(output.dir, "malignant_combined_dataset_k12_reprocess.Rds"))
 ###################### PANEL A ######################
 pdf(paste0(output.dir, "/panel 3A 20220714 HTAPP malignant liger.pdf"))
 print(
@@ -49,6 +52,18 @@ print(
     figure_plot = TRUE,
     group.by = "inmfNorm.cluster",
     colors_use = met.brewer("Signac", 12)
+  )
+)
+dev.off()
+
+pdf(paste0(output.dir, "/panel 3A 20220714 HTAPP malignant liger with labels.pdf"))
+print(
+  DimPlot_scCustom(
+    seurat_object = gcdata,
+    figure_plot = TRUE, 
+    group.by = "inmfNorm.cluster", 
+    colors_use = met.brewer("Signac", 12), 
+    label = TRUE
   )
 )
 dev.off()
@@ -69,6 +84,17 @@ write.csv(
   row.names = FALSE
 )
 
+gcdata.flat <- JoinLayers(gcdata)
+#calculate DE genes for each iNMF cluster
+de.markers <-
+  FindAllMarkers(
+    object = gcdata.flat,
+    group.by = "inmfNorm.cluster",
+    logfc.threshold = 2,
+    only.pos = TRUE
+  )
+de.markers.filter <- subset(de.markers, subset = p_val_adj < 1E-100)
+write.csv(de.markers.filter, file = paste0(output.dir, "/Table S5 DE genes.csv"))
 
 
 ###################### PANEL B ######################
@@ -227,7 +253,15 @@ p2 <-
   do_EnrichmentHeatmap(
     sample = gcdata,
     input_gene_list = list("ADRN" = ADRN.genes, "MES" = MES.genes),
-    viridis.direction = -1, flavor = "UCell,"
+    viridis.direction = -1, flavor = "UCell",
+    group.by = "inmfNorm.cluster",
+    flip = TRUE
+  )
+p3 <-
+  do_EnrichmentHeatmap(
+    sample = gcdata,
+    input_gene_list = list("ADRN" = ADRN.genes, "MES" = MES.genes),
+    viridis.direction = -1, flavor = "AUCell",
     group.by = "inmfNorm.cluster",
     flip = TRUE
   )
