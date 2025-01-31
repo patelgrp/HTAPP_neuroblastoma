@@ -40,7 +40,7 @@ print(
 )
 dev.off()
 
-#pull top 50 feature embeddings for each NMF cluster for supplemental table S1
+#pull top 50 feature embeddings for each NMF cluster for supplemental table S4
 nmf.embeddings <- matrix(nrow = 50, ncol = 20)
 colnames(nmf.embeddings) <- paste0("iNMF", 1:20)
 for (i in 1:20)
@@ -114,7 +114,7 @@ gcdata.subset <-
   subset(gcdata, subset = malignant_calling == "SNV+CNV" &
            annotated_coarse != 'erythrocyte')
 
-#feature plot of allel probabilities for those cells that had numbat calls.
+#feature plot of allele probabilities for those cells that had numbat calls.
 pdf(paste0(output.dir, "/malignant state calls.pdf"))
 FeaturePlot_scCustom(
   seurat_object = gcdata.subset,

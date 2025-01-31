@@ -247,7 +247,7 @@ saveRDS(integrated.Seurat,
         file = paste0(output.dir, "combined_dataset_k20.Rds"))
 
 # integrated.Seurat <-
-#   readRDS(file = paste0(output.dir, "combined_dataset_k30.Rds"))
+#   readRDS(file = paste0(output.dir, "combined_dataset_k20.Rds"))
 
 Idents(integrated.Seurat) <- "Channel"
 pdf(
@@ -291,15 +291,15 @@ Seurat.mal <- selectGenes(Seurat.mal)
 Seurat.mal <- scaleNotCenter(Seurat.mal)
 Seurat.mal
 
-Seurat.mal <- runINMF(Seurat.mal, k = 20)
+Seurat.mal <- runINMF(Seurat.mal, k = 12)
 Seurat.mal <- quantileNorm(Seurat.mal)
 Seurat.mal
 
 Seurat.mal <-
-  RunUMAP(Seurat.mal, reduction = "inmfNorm", dims = 1:20)
+  RunUMAP(Seurat.mal, reduction = "inmfNorm", dims = 1:12)
 
 saveRDS(Seurat.mal,
-        file = paste0(output.dir, "malignant_combined_dataset_k20.Rds"))
+        file = paste0(output.dir, "malignant_combined_dataset_k12.Rds"))
 
 # Seurat.mal <-
 #   readRDS(file = paste0(output.dir, "malignant_combined_dataset_k20.Rds"))
