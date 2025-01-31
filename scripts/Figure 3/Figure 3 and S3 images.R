@@ -8,6 +8,7 @@ library(SCpubr)
 library(UCell)
 library(scCustomize)
 library(MetBrewer)
+library(viridis)
 
 #Data for this figure were generated using the Broad Terra pipeline
 #This pipeline takes Cell Ranger aligned data, and uses Cellbender to remove
@@ -234,6 +235,73 @@ gcdata <- JoinLayers(gcdata)
 gcdata <-
   AddModuleScore_UCell(obj = gcdata,
                        features = list(ADRN = ADRN.genes, MES = MES.genes))
+
+
+gcdata <- AddModuleScore_UCell(obj = gcdata, 
+                               features = list(ADRN.score = c("ADGRV1", "ANKFN1", "CASC9", "DBH", "GNTG1", 
+                                                              "OSBPL3", "RBM20", "SLC03A1", "TENM1", "TMEM132C", 
+                                                              "CDKN1C", "ECEL1", "ELFN1", "FZD5", "GRIK3", 
+                                                              "NDRG1", "POU6F2", "PWRN1", "RALYL", "RSPO1", 
+                                                              "SLC18A1", "TH", "CRH"),
+                                               SYMP.score = c("ARHGAP11A", "ASPM", "BUB1", "BUB1B", "CDC25C",
+                                                              "CDCA2", "CENPE", "DLGAP5", "ECT2", "GAS2L3",
+                                                              "GTSE1", "IQGAP3", "KIF2C", "KIF4A", "KIF11",
+                                                              "KIF14", "KIF18A", "KIF18B", "KIF23", "KNL1",
+                                                              "MKI67", "NDC80", "NOSTRIN", "PRR11", "TOP2A"),
+                                               MES.score = c("ADAMTS20", "BCHE", "BTBD11", "CDH11", "COL4A2",
+                                                             "COL12A1", "FAM49A", "FAM153A", "FAM153B", "FAM153CP",
+                                                             "GACAT3", "GASK1B", "KLRK1", "LRIG3", "MCTP2",
+                                                             "PCDH11X", "PDGFRA", "SHISA9", "SMAD3", "SORCS3",
+                                                             "TLL2", "VCAN")
+                                               ))
+
+pdf(paste0(output.dir, "/Mike scores.pdf"))
+FeaturePlot_scCustom(
+  seurat_object = gcdata,
+  features = c("ADRN.score_UCell"),
+  figure_plot = T,
+  pt.size = 2,
+  raster = T,
+  raster.dpi = c(1024, 1024),
+  na_cutoff = NULL,
+  order = TRUE,
+  colors_use = viridis(n = 10, option = "D", alpha = 0.7)
+)
+FeaturePlot_scCustom(
+  seurat_object = gcdata,
+  features = c("SYMP.score_UCell"),
+  figure_plot = T,
+  pt.size = 2,
+  raster = T,
+  raster.dpi = c(1024, 1024),
+  na_cutoff = NULL,
+  order = TRUE,
+  colors_use = viridis(n = 10, option = "D", alpha = 0.7)
+)
+FeaturePlot_scCustom(
+  seurat_object = gcdata,
+  features = c("MES.score_UCell"),
+  figure_plot = T,
+  pt.size = 2,
+  raster = T,
+  raster.dpi = c(1024, 1024),
+  na_cutoff = NULL,
+  order = TRUE,
+  colors_use = viridis(n = 10, option = "D", alpha = 0.7)
+)
+VlnPlot_scCustom(
+  seurat_object = gcdata,
+  features = c("ADRN.score_UCell", "SYMP.score_UCell", "MES.score_UCell"),
+  pt.size = 0,
+  group.by = "inmfNorm.cluster",
+  num_columns = 1,
+  colors_use = met.brewer("Signac", 12),
+  plot_median = TRUE,
+  median_size = 5
+)
+
+dev.off()
+
 # gcdata <- AddModuleScore(object = gcdata,
 #                          features = list(ADRN.genes),
 #                          name = "ADRN")
