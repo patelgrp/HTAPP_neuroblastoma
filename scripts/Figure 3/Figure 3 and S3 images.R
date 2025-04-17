@@ -17,34 +17,34 @@ library(viridis)
 
 ######################CODE TO GENERATE FIGURE 3 and S3 PANELS######################
 #load complete dataset with all single-cell and single-nucleus data (only malignant cells/nuclei)
-gcdata <-
-  readRDS(
-    "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/output/malignant_combined_dataset_k12.Rds"
-  )
+# gcdata <-
+#   readRDS(
+#     "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/output/malignant_combined_dataset_k12.Rds"
+#   )
 output.dir <- output.dir <-
   "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/output/Fig3"
+# 
+# #cluster 7 is a minor cluster contaminated with doublets expressing tumor + macrophage markers (PTPRC+, CD68+, LYZ+)
+# gcdata <-
+#   subset(gcdata, subset = inmfNorm.cluster == 7, invert = TRUE)
+# 
+# #reprocesss data
+# gcdata <- normalize(gcdata)
+# gcdata <- selectGenes(gcdata)
+# gcdata <- scaleNotCenter(gcdata)
+# gcdata
+# 
+# gcdata <- runINMF(gcdata, k = 8)
+# gcdata <- quantileNorm(gcdata)
+# gcdata
+# 
+# gcdata <-
+#   RunUMAP(gcdata, reduction = "inmfNorm", dims = 1:8)
+# 
+# saveRDS(gcdata,
+#         file = paste0(output.dir, "malignant_combined_dataset_k8_reprocess.Rds"))
 
-#cluster 7 is a minor cluster contaminated with doublets expressing tumor + macrophage markers (PTPRC+, CD68+, LYZ+)
-gcdata <-
-  subset(gcdata, subset = inmfNorm.cluster == 7, invert = TRUE)
-
-#reprocesss data
-gcdata <- normalize(gcdata)
-gcdata <- selectGenes(gcdata)
-gcdata <- scaleNotCenter(gcdata)
-gcdata
-
-gcdata <- runINMF(gcdata, k = 12)
-gcdata <- quantileNorm(gcdata)
-gcdata
-
-gcdata <-
-  RunUMAP(gcdata, reduction = "inmfNorm", dims = 1:12)
-
-saveRDS(gcdata,
-        file = paste0(output.dir, "malignant_combined_dataset_k12_reprocess.Rds"))
-
-gcdata <- readRDS(paste0(output.dir, "malignant_combined_dataset_k12_reprocess.Rds"))
+gcdata <- readRDS(paste0(output.dir, "malignant_combined_dataset_k8_reprocess.Rds"))
 ###################### PANEL A ######################
 pdf(paste0(output.dir, "/panel 3A 20220714 HTAPP malignant liger.pdf"))
 print(
@@ -70,9 +70,9 @@ print(
 dev.off()
 
 #pull top 50 feature embeddings for each NMF cluster for supplemental table S4
-nmf.embeddings <- matrix(nrow = 50, ncol = 12)
-colnames(nmf.embeddings) <- paste0("iNMF", 1:12)
-for (i in 1:12)
+nmf.embeddings <- matrix(nrow = 50, ncol = 8)
+colnames(nmf.embeddings) <- paste0("iNMF", 1:8)
+for (i in 1:8)
 {
   nmf.embeddings[, i] <-
     TopFeatures(object = gcdata[["inmfNorm"]],
@@ -102,15 +102,11 @@ write.csv(de.markers.filter, file = paste0(output.dir, "/Table S5 DE genes.csv")
 #reorder clusters for heatmap
 ordering <- c("3",
               "7",
-              "2",
               "8" ,
-              "6",
-              "12",
               "4",
-              "10",
+              "6",
+              "2",
               "5",
-              "9",
-              "11",
               "1")
 nmf.embeddings <-
   nmf.embeddings[, paste0("iNMF", ordering)]
@@ -145,27 +141,35 @@ dev.off()
 
 ###################### PANEL C ######################
 pdf(paste0(output.dir, "/panel 3C HTAPP malignant feature plots.pdf"))
+print(
+  DimPlot_scCustom(
+    seurat_object = gcdata,
+    figure_plot = TRUE,
+    group.by = "inmfNorm.cluster",
+    colors_use = met.brewer("Signac", 12), label = T
+  )
+)
 FeaturePlot_scCustom(
   seurat_object = gcdata,
-  features = "VIM",
+  features = "VCAN",
   figure_plot = T,
   pt.size = 2,
   raster = T,
   raster.dpi = c(1024, 1024),
-  na_cutoff = NULL,
-  max.cutoff = 1.5,
+#  na_cutoff = NULL,
+  #max.cutoff = 1.5,
   order = TRUE,
   colors_use = viridis(n = 10, option = "D", alpha = 0.5)
 )
 FeaturePlot_scCustom(
   seurat_object = gcdata,
-  features = "B2M",
+  features = "COL4A2",
   figure_plot = T,
   pt.size = 2,
   raster = T,
   raster.dpi = c(1024, 1024),
-  na_cutoff = NULL,
-  max.cutoff = 3,
+  #  na_cutoff = NULL,
+  #max.cutoff = 1.5,
   order = TRUE,
   colors_use = viridis(n = 10, option = "D", alpha = 0.5)
 )
@@ -176,20 +180,20 @@ FeaturePlot_scCustom(
   pt.size = 2,
   raster = T,
   raster.dpi = c(1024, 1024),
-  na_cutoff = NULL,
-  max.cutoff = 1.5,
+#  na_cutoff = NULL,
+#  max.cutoff = 1.5,
   order = TRUE,
   colors_use = viridis(n = 10, option = "D", alpha = 0.5)
 )
 FeaturePlot_scCustom(
   seurat_object = gcdata,
-  features = "DBH",
+  features = "HAND1",
   figure_plot = T,
   pt.size = 2,
   raster = T,
   raster.dpi = c(1024, 1024),
-  na_cutoff = NULL,
-  max.cutoff = 2,
+#  na_cutoff = NULL,
+#  max.cutoff = 2,
   order = TRUE,
   colors_use = viridis(n = 10, option = "D", alpha = 0.5)
 )
@@ -200,8 +204,8 @@ FeaturePlot_scCustom(
   pt.size = 2,
   raster = T,
   raster.dpi = c(1024, 1024),
-  na_cutoff = NULL,
-  max.cutoff = 1.5,
+#  na_cutoff = NULL,
+#  max.cutoff = 1.5,
   order = TRUE,
   colors_use = viridis(n = 10, option = "D", alpha = 0.5)
 )
@@ -212,8 +216,8 @@ FeaturePlot_scCustom(
   pt.size = 2,
   raster = T,
   raster.dpi = c(1024, 1024),
-  na_cutoff = NULL,
-  max.cutoff = 2,
+#  na_cutoff = NULL,
+#  max.cutoff = 2,
   order = TRUE,
   colors_use = viridis(n = 10, option = "D", alpha = 0.5)
 )
@@ -227,6 +231,13 @@ MES.genes <- signatures$MESENCHYMAL
 ADRN.genes <- ADRN.genes[ADRN.genes != ""]
 MES.genes <- MES.genes[MES.genes != ""]
 
+signatures_dyer <-
+  read.csv("dyer_state_sigs.csv")  #signatures from Dyer re-analysis
+ADRN.genes.dyer <- signatures_dyer$ADRN
+MES.genes.dyer <- signatures_dyer$MES
+ADRN.genes.dyer <- ADRN.genes.dyer[ADRN.genes.dyer != ""]
+MES.genes.dyer <- MES.genes.dyer[MES.genes.dyer != ""]
+
 Idents(gcdata) <- "inmfNorm.cluster"
 gcdata@active.ident <-
   factor(gcdata@active.ident, levels = ordering)
@@ -235,63 +246,103 @@ gcdata <- JoinLayers(gcdata)
 gcdata <-
   AddModuleScore_UCell(obj = gcdata,
                        features = list(ADRN = ADRN.genes, MES = MES.genes))
+gcdata <-
+  AddModuleScore_UCell(obj = gcdata,
+                       features = list(ADRN.dyer = ADRN.genes.dyer, MES.dyer = MES.genes.dyer))
 
-
-gcdata <- AddModuleScore_UCell(obj = gcdata, 
-                               features = list(ADRN.score = c("ADGRV1", "ANKFN1", "CASC9", "DBH", "GNTG1", 
-                                                              "OSBPL3", "RBM20", "SLC03A1", "TENM1", "TMEM132C", 
-                                                              "CDKN1C", "ECEL1", "ELFN1", "FZD5", "GRIK3", 
-                                                              "NDRG1", "POU6F2", "PWRN1", "RALYL", "RSPO1", 
-                                                              "SLC18A1", "TH", "CRH"),
-                                               SYMP.score = c("ARHGAP11A", "ASPM", "BUB1", "BUB1B", "CDC25C",
-                                                              "CDCA2", "CENPE", "DLGAP5", "ECT2", "GAS2L3",
-                                                              "GTSE1", "IQGAP3", "KIF2C", "KIF4A", "KIF11",
-                                                              "KIF14", "KIF18A", "KIF18B", "KIF23", "KNL1",
-                                                              "MKI67", "NDC80", "NOSTRIN", "PRR11", "TOP2A"),
-                                               MES.score = c("ADAMTS20", "BCHE", "BTBD11", "CDH11", "COL4A2",
-                                                             "COL12A1", "FAM49A", "FAM153A", "FAM153B", "FAM153CP",
-                                                             "GACAT3", "GASK1B", "KLRK1", "LRIG3", "MCTP2",
-                                                             "PCDH11X", "PDGFRA", "SHISA9", "SMAD3", "SORCS3",
-                                                             "TLL2", "VCAN")
-                                               ))
 
 pdf(paste0(output.dir, "/Mike scores.pdf"))
+print(
+  DimPlot_scCustom(
+    seurat_object = gcdata,
+    figure_plot = TRUE, 
+    group.by = "inmfNorm.cluster", 
+    colors_use = met.brewer("Signac", 12), 
+    label = TRUE
+  )
+)
+print(
+  DimPlot_scCustom(
+    seurat_object = gcdata,
+    figure_plot = TRUE, 
+    group.by = "MYCN",
+    label = TRUE
+  )
+)
+print(
+  DimPlot_scCustom(
+    seurat_object = gcdata,
+    figure_plot = TRUE, 
+    group.by = "condition",
+    label = TRUE
+  )
+)
+print(
+  DimPlot_scCustom(
+    seurat_object = gcdata,
+    figure_plot = TRUE, 
+    group.by = "Phase",
+    label = TRUE
+  )
+)
 FeaturePlot_scCustom(
   seurat_object = gcdata,
-  features = c("ADRN.score_UCell"),
+  features = c("joint", "allele", "expression"),
   figure_plot = T,
   pt.size = 2,
   raster = T,
-  raster.dpi = c(1024, 1024),
+  raster.dpi = c(1024, 1024), 
   na_cutoff = NULL,
-  order = TRUE,
+  order = TRUE, max.cutoff = 0.8, min.cutoff = 0.2,
   colors_use = viridis(n = 10, option = "D", alpha = 0.7)
 )
 FeaturePlot_scCustom(
   seurat_object = gcdata,
-  features = c("SYMP.score_UCell"),
+  features = c("ADRN_UCell"),
   figure_plot = T,
   pt.size = 2,
   raster = T,
-  raster.dpi = c(1024, 1024),
+  raster.dpi = c(1024, 1024), 
   na_cutoff = NULL,
-  order = TRUE,
+  order = TRUE, max.cutoff  = 0.3, min.cutoff = 0.2,
   colors_use = viridis(n = 10, option = "D", alpha = 0.7)
 )
 FeaturePlot_scCustom(
   seurat_object = gcdata,
-  features = c("MES.score_UCell"),
+  features = c("MES_UCell"),
   figure_plot = T,
   pt.size = 2,
   raster = T,
-  raster.dpi = c(1024, 1024),
+  raster.dpi = c(1024, 1024), 
   na_cutoff = NULL,
-  order = TRUE,
+  order = TRUE, max.cutoff  = 0.25, min.cutoff = 0.15,
+  colors_use = viridis(n = 10, option = "D", alpha = 0.7)
+)
+FeaturePlot_scCustom(
+  seurat_object = gcdata,
+  features = c("ADRN.dyer_UCell"),
+  figure_plot = T,
+  pt.size = 2,
+  raster = T,
+  raster.dpi = c(1024, 1024), 
+  na_cutoff = NULL,
+  order = TRUE, max.cutoff  = 0.2, min.cutoff = 0.05,
+  colors_use = viridis(n = 10, option = "D", alpha = 0.7)
+)
+FeaturePlot_scCustom(
+  seurat_object = gcdata,
+  features = c("MES.dyer_UCell"),
+  figure_plot = T,
+  pt.size = 2,
+  raster = T,
+  raster.dpi = c(1024, 1024), 
+  na_cutoff = NULL,
+  order = TRUE, max.cutoff  = 0.05, min.cutoff = 0.01,
   colors_use = viridis(n = 10, option = "D", alpha = 0.7)
 )
 VlnPlot_scCustom(
   seurat_object = gcdata,
-  features = c("ADRN.score_UCell", "SYMP.score_UCell", "MES.score_UCell"),
+  features = c("ADRN_UCell", "MES_UCell", "ADRN.dyer_UCell", "MES.dyer_UCell"),
   pt.size = 0,
   group.by = "inmfNorm.cluster",
   num_columns = 1,
