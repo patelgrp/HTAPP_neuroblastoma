@@ -16,7 +16,7 @@ gcdata <-
 output.dir <-
   "/mnt/storage1/Anand_temp/github_repos/HTAPP_neuroblastoma/output/Fig2"
 
-#print a pdf with a umap colored by iNMF cluster
+#print a pdf with a umap colored by iNMF cluster (panel 2A)
 pdf(paste0(output.dir, "/UMAP by iNMF cluster.pdf"))
 print(
   DimPlot_scCustom(
@@ -28,7 +28,7 @@ print(
 )
 dev.off()
 
-#print a pdf with a umap colored by annotated cluster
+#print a pdf with a umap colored by annotated cluster (panel 2C)
 pdf(paste0(output.dir, "/UMAP by coarse annotation.pdf"))
 print(
   DimPlot_scCustom(
@@ -96,7 +96,7 @@ avg.neuroblastoma@active.ident <-
 color.scheme <-
   colorRampPalette(RColorBrewer::brewer.pal(11, "RdBu"))(256)
 
-#plot heatmap of major genes
+#plot heatmap of major genes (panel 2D)
 pdf(paste0(output.dir, "/GEP heatmap.pdf"))
 print(
   DoHeatmap(
@@ -114,7 +114,7 @@ gcdata.subset <-
   subset(gcdata, subset = malignant_calling == "SNV+CNV" &
            annotated_coarse != 'erythrocyte')
 
-#feature plot of allele probabilities for those cells that had numbat calls.
+#feature plot of allele probabilities for those cells that had numbat calls (panel 2B)
 pdf(paste0(output.dir, "/malignant state calls.pdf"))
 FeaturePlot_scCustom(
   seurat_object = gcdata.subset,
@@ -127,6 +127,7 @@ FeaturePlot_scCustom(
 )
 dev.off()
 
+#make a violin plot of allele-based malignancy calls (panel 2E)
 pdf(paste0(output.dir, "/malignant state violin plot.pdf"))
 VlnPlot_scCustom(
   seurat_object = gcdata.subset,
@@ -140,6 +141,7 @@ VlnPlot_scCustom(
 )
 dev.off()
 
+#bar plot of cell numbers divided by single-cell vs single-nucleus technique (panel 2F)
 pdf(paste0(output.dir, "/barplots.pdf"))
 do_BarPlot(
   sample = gcdata.subset,
@@ -155,7 +157,7 @@ do_BarPlot(
 )
 dev.off()
 
-#write table for scCODA analyses
+#write table for scCODA analyses (see jupiter notebooks)
 write.csv(
   table(gcdata.subset$orig.ident, gcdata.subset$annotated_coarse),
   file = paste0(output.dir, "/cell counts.csv")
